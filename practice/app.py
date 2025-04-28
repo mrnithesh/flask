@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, url_for
 
 app = Flask(__name__)
 
@@ -18,7 +18,7 @@ def greet(name):
 def form():
     if request.method == 'POST':
         name = request.form['username']
-        return "Hello"
+        return redirect(url_for('greet', name=name))
     return render_template('form.html')
 if __name__ == '__main__':
     app.run(debug=True)
