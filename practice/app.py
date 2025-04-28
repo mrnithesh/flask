@@ -12,7 +12,7 @@ def about():
 
 @app.route('/user/<name>')
 def greet(name):
-    return f'Hello, {name}!'
+    return render_template('greet_user.html', username=name)
 
 if __name__ == '__main__':
     app.run(debug=True)
