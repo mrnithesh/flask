@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Admin Page</title>
+  </head>
+  <body>
+    <h1>Admin Page</h1>
+    <h2>Users</h2>
+    {% for user in users %}
+    <ul>
+      <li>{{user}}</li>
+    </ul>
+    {% endfor %}
+  </body>
+</html>

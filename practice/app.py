@@ -20,5 +20,16 @@ def form():
         name = request.form['username']
         return redirect(url_for('greet', name=name))
     return render_template('form.html')
+
+@app.route('/profile/<username>')
+def profile(username):
+    username = username.lower()
+    return render_template('profile.html', username=username, is_admin=username == 'admin')
+
+@app.route('/admin')
+def admin():
+    users = ['admin', 'user1', 'user2']
+    return render_template('admin.html', users=users)
+
 if __name__ == '__main__':
     app.run(debug=True)
