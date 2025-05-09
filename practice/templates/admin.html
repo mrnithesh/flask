@@ -4,6 +4,13 @@
     <title>Admin Page</title>
   </head>
   <body>
+    {% with messages = get_flashed_messages(with_categories=True) %}
+    {% if messages %}
+    {% for category, message in messages %}
+    <div class="alert alert-{{ category }}">{{ message }}</div>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
     <h1>Admin Page</h1>
     <h2>Users</h2>
     {% for user in users %}

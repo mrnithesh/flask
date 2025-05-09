@@ -1,7 +1,7 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, flash
 
 app = Flask(__name__)
-
+app.secret_key = 'secretkey'
 @app.route('/')
 def home():
     return render_template('home.html')
@@ -21,6 +21,19 @@ def form():
         return redirect(url_for('greet', name=name))
     return render_template('form.html')
 
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+        if username =="admin" and password == "pass":
+            flash("user logged in sucessfully!","success")
+            return redirect(url_for('admin'))
+        else:
+            flash("Invalid credentials!", "error")
+            return redirect(url_for("login"))
+    return render_template('login.html')
+        
 @app.route('/profile/<username>')
 def profile(username):
     username = username.lower()
