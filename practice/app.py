@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, flash
+from flask import Flask, render_template, request, redirect, url_for, flash, session
 
 app = Flask(__name__)
 app.secret_key = 'secretkey'
@@ -27,13 +27,20 @@ def login():
         username = request.form['username']
         password = request.form['password']
         if username =="admin" and password == "pass":
+            session["user"] = username
             flash("user logged in sucessfully!","success")
             return redirect(url_for('admin'))
         else:
             flash("Invalid credentials!", "error")
             return redirect(url_for("login"))
     return render_template('login.html')
-        
+
+@app.route('/logout')
+def logout():
+    session.pop("user")
+    flash("Logged out successfully.", "info")
+    return redirect(url_for("login"))
+
 @app.route('/profile/<username>')
 def profile(username):
     username = username.lower()
