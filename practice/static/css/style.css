@@ -21,3 +21,11 @@ button {
     border-radius: 5px;
     cursor: pointer;
 }
+
+.nav-bar {
+    background-color: #f3a71b;
+    color: white;
+    padding: 10px;
+    width: 100px;
+    border-radius: 15px;
+}

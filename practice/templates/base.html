@@ -8,13 +8,16 @@
     <div class="container">
         <header>
             <h1>Flask App</h1>
-            <nav>
+            <div class="nav-bar">
+                <nav>
                 <ul>
                     <li><a href="{{ url_for('home') }}">Home</a></li>
                     <li><a href="{{ url_for('about') }}">About</a></li>
 
                 </ul>
-            </nav>
+                </nav>
+            </div>
+            
         </header>
 
         {% block content %}
