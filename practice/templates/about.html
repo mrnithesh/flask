@@ -1,12 +1,8 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>
-            About Us
-        </title>
-    </head>
-    <body>
-        <h1> About us</h1>
-        <p> This is a webpage rendered by flask! </p>
-    </body>
-</html>
+{% extends "base.html" %}
+
+{% block title %} About us {% endblock%}
+
+{%block content %}
+<h2> About us pages contents here</h2>
+<p> rendered from about.html extending base.html </p>
+{% endblock%}
